@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>卓昌半導體 Diamond X Semiconductor</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+      background: #f8fafc;
+      color: #1a1a1a;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ------------------- Animations ------------------- */
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: 0.9s ease;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: 1s ease;
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: 0.9s ease;
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: 0.9s ease;
+    }
+
+    .show {
+      opacity: 1 !important;
+      transform: translate(0,0) !important;
+    }
+
+    /* Hero breathing animation */
+    @keyframes heroGlow {
+      0% { filter: brightness(100%); }
+      50% { filter: brightness(115%); }
+      100% { filter: brightness(100%); }
+    }
+
+    /* ------------------- Language Button ------------------- */
+    .lang-btn {
+      position: fixed;
+      right: 16px;
+      top: 16px;
+      padding: 10px 18px;
+      background: #0050c8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    .lang-btn:hover {
+      transform: scale(1.06);
+    }
+
+    /* ------------------- Hero Section ------------------- */
+    .hero {
+      background: linear-gradient(135deg, #003a85, #0052cc);
+      color: white;
+      text-align: center;
+      padding: 120px 24px;
+      animation: heroGlow 6s infinite ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeHero 1.4s ease forwards;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 720px;
+      margin: auto;
+      opacity: 0;
+      animation: fadeHero 2s ease forwards;
+    }
+
+    @keyframes fadeHero {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ------------------- Layout ------------------- */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 22px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .blue {
+      color: #0047AB;
+    }
+
+    /* ------------------- Card Grid ------------------- */
+    .card-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.12);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ------------------- Applications List ------------------- */
+    .apps {
+      list-style: disc;
+      padding-left: 20px;
+      column-gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .apps {
+        columns: 2;
+      }
+    }
+
+    /* ------------------- Contact Button ------------------- */
+    .contact-btn {
+      background: #0047AB;
+      color: white;
+      padding: 16px 34px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: 0.25s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .contact-btn:hover {
+      background: #003a8c;
+      transform: translateY(-3px);
+    }
+
+    /* ------------------- Footer ------------------- */
+    footer {
+      background: #002f6c;
+      color: white;
+      text-align: center;
+      padding: 28px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    /* ------------------- Mobile Optimizations ------------------- */
+    @media (max-width: 480px) {
+      .hero {
+        padding: 90px 16px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .contact-btn {
+        width: 90%;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<button class="lang-btn" onclick="toggleLang()">ENGLISH</button>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <h1 id="title">CVD 鑽石：為下一代 AI 運算提供終極熱管理解決方案</h1>
+  <p id="subtitle">卓昌半導體：專注於高性能人工鑽石客製化生產，確保您的核心晶片在極限下穩定運行。</p>
+</div>
+
+<!-- ================= Core Value ================= -->
+<div class="container fade-up">
+  <h2 class="blue" id="coreTitle">冷靜，源於極致導熱</h2>
+  <p id="coreText">
+    在高階 AI 晶片持續挑戰功率密度極限的時代，熱量是性能與可靠性的最大敵人。
+    卓越半導體掌握能讓高階晶片冷靜運作的碳元素結構——CVD 鑽石。
+  </p>
+
+  <div class="card-grid">
+    <div class="card slide-in-left">
+      <h3 class="blue" id="h1Title">導熱之王</h3>
+      <p id="h1Text">鑽石無與倫比的超高導熱表現 (>2200 W/m·K)，是您熱管理系統的夢幻搭配。</p>
+    </div>
+    <div class="card slide-in-right">
+      <h3 class="blue" id="h2Title">熱膨脹匹配</h3>
+      <p id="h2Text">精準控制熱膨脹係數 (CTE)，完美貼合半導體晶片，消除界面應力。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Advantages ================= -->
+<div class="container fade-up" style="background:white;">
+  <h2 class="blue" id="advTitle">卓昌優勢：客製化與技術壁壘</h2>
+
+  <h3 class="blue" id="adv1Title">A. 專利技術與製造領導力</h3>
+  <p id="adv1Text">利用專利製程技術（LADDIS、MP-CVD），確保每片鑽石基板具備領先純度、結構一致性與電學性能。</p>
+
+  <h3 class="blue" id="adv2Title">B. 彈性供應：小量多樣化客製</h3>
+  <p id="adv2Text">提供完全客製化製造服務，支援小量、多樣化訂單，加速產品上市與研發進度。</p>
+</div>
+
+<!-- ================= Applications ================= -->
+<div class="container fade-in" style="background:#f0f4fa;">
+  <h2 class="blue" id="appsTitle">應用領域 (Applications)</h2>
+  <ul class="apps" id="appsList">
+    <li>AI 運算集群：GPU/CPU 高效能 Die 級散熱</li>
+    <li>高頻通訊：5G/6G 毫米波 RF 模組</li>
+    <li>功率電子：EV 新能源逆變器</li>
+    <li>尖端科技：高能雷射、航太電子元件</li>
+  </ul>
+</div>
+
+<!-- ================= Contact ================= -->
+<div class="container fade-up" style="text-align:center;">
+  <h2 class="blue" id="contactTitle">聯繫洽談</h2>
+  <p id="contactText"><strong>準備好將您的產品性能推向極限了嗎？</strong><br>
+    邀請您的技術採購與研發團隊與我們聯繫，我們將提供專業技術評估與客製化報價，確保您的熱管理需求獲得最頂級的解決方案。</p>
+    
+    <ul style="margin-top:20px; list-style-type:none; padding-left:0;">
+      <li>📧 技術諮詢 Email： <a href="mailto:info@zhuochangsemi.com" style="color:#0047AB;">sales@diamondx.tw</a></li>
+      <li>📞 聯絡電話： +886-2-55760508</li>
+    </ul>
+  <!-- button class="contact-btn" id="contactBtn">聯繫我們</button-->
+</div>
+
+<!-- ================= Footer ================= -->
+<footer id="footer">
+  © 2025 卓昌半導體股份有限公司 Diamond X Semiconductor Inc. All rights reserved.
+</footer>
+
+<script>
+/* -------------------------------------------------------------------
+   Scroll Animation Using IntersectionObserver
+------------------------------------------------------------------- */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.fade-up, .fade-in, .slide-in-left, .slide-in-right')
+        .forEach(el => observer.observe(el));
+
+/* -------------------------------------------------------------------
+   Language Toggle Content
+------------------------------------------------------------------- */
+let lang = "zh";
+
+function toggleLang() {
+  lang = (lang === "zh") ? "en" : "zh";
+  document.querySelector(".lang-btn").innerText = lang === "zh" ? "ENGLISH" : "中文";
+
+  const t = {
+    zh: {
+      title:"CVD 鑽石：為下一代 AI 運算提供終極熱管理解決方案",
+      subtitle:"卓昌半導體：專注高性能人工鑽石客製化生產，確保晶片在極限下穩定運行。",
+      coreTitle:"冷靜，源於極致導熱",
+      coreText:"在高階 AI 晶片挑戰功率密度時代，熱量是最大敵人。CVD 鑽石是克服瓶頸的核心材料。",
+      h1Title:"導熱之王",
+      h1Text:"鑽石超高導熱 (>2200 W/m·K)，是頂尖散熱的首選材料。",
+      h2Title:"熱膨脹匹配",
+      h2Text:"精準 CTE 配對半導體晶片，避免界面應力與熱疲勞。",
+      advTitle:"卓昌優勢：客製化與技術壁壘",
+      adv1Title:"A. 專利技術與製造領導力",
+      adv1Text:"專利 LADDIS + MP-CVD 製程，確保純度、均勻性與結構完整。",
+      adv2Title:"B. 彈性供應：小量多樣化客製",
+      adv2Text:"支援客製尺寸、厚度、拋光、小量供貨，加速研發。",
+      appsTitle:"應用領域 (Applications)",
+      apps:["AI 運算集群：GPU/CPU Die 級散熱","高頻通訊：5G/6G RF 模組","功率電子：EV 逆變器與能源管理","尖端科技：高能雷射、航太電子"],
+      contactTitle:"聯繫洽談",
+      contactText:"讓我們協助您突破性能極限，提供專業技術與客製解決方案。",
+      contactBtn:"聯繫我們",
+      footer:"© 2025 卓昌半導體股份有限公司 Diamond X Semiconductor Inc. All rights reserved."
+    },
+
+    en: {
+      title:"CVD Diamond: Ultimate Thermal Solution for Next-Generation AI Computing",
+      subtitle:"Diamond X Semiconductor delivers custom high-performance synthetic diamond for stable operation under extreme workloads.",
+      coreTitle:"Cool Performance, Powered by Extreme Thermal Conductivity",
+      coreText:"As AI chips push power density limits, heat becomes the primary bottleneck. CVD diamond is the key to next-level performance.",
+      h1Title:"King of Thermal Conductivity",
+      h1Text:"Diamond exceeds 2200 W/m·K, making it the ultimate thermal material.",
+      h2Title:"Thermal Expansion Match",
+      h2Text:"Engineered CTE ensures minimal stress and reliable semiconductor bonding.",
+      advTitle:"Advantages: Customization & Technical Leadership",
+      adv1Title:"A. Patented Technology & Manufacturing Leadership",
+      adv1Text:"LADDIS + MP-CVD processes ensure industry-leading purity and uniformity.",
+      adv2Title:"B. Flexible Custom Manufacturing",
+      adv2Text:"Small-batch production & tailored specs accelerate innovation.",
+      appsTitle:"Applications",
+      apps:["AI Compute: GPU/CPU die cooling","5G/6G mmWave RF modules","EV & Renewable Power Electronics","High-Power Lasers & Aerospace"],
+      contactTitle:"Contact & Inquiry",
+      contactText:"Let us help you push performance to the next level. Contact our engineering team today.",
+      contactBtn:"Contact Us",
+      footer:"© 2025 Diamond X Semiconductor Inc. All rights reserved."
+    }
+  };
+
+  const d = t[lang];
+
+  document.getElementById("title").innerText = d.title;
+  document.getElementById("subtitle").innerText = d.subtitle;
+  document.getElementById("coreTitle").innerText = d.coreTitle;
+  document.getElementById("coreText").innerText = d.coreText;
+  document.getElementById("h1Title").innerText = d.h1Title;
+  document.getElementById("h1Text").innerText = d.h1Text;
+  document.getElementById("h2Title").innerText = d.h2Title;
+  document.getElementById("h2Text").innerText = d.h2Text;
+  document.getElementById("advTitle").innerText = d.advTitle;
+  document.getElementById("adv1Title").innerText = d.adv1Title;
+  document.getElementById("adv1Text").innerText = d.adv1Text;
+  document.getElementById("adv2Title").innerText = d.adv2Title;
+  document.getElementById("adv2Text").innerText = d.adv2Text;
+  document.getElementById("appsTitle").innerText = d.appsTitle;
+  document.getElementById("appsList").innerHTML = d.apps.map(a=>`<li>${a}</li>`).join("");
+  document.getElementById("contactTitle").innerText = d.contactTitle;
+  document.getElementById("contactText").innerText = d.contactText;
+  document.getElementById("contactBtn").innerText = d.contactBtn;
+  document.getElementById("footer").innerText = d.footer;
+}
+</script>
+
+</body>
+</html>
